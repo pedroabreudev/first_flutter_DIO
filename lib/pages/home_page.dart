@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../service/make_number_random.dart';
 
@@ -16,9 +17,16 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Meu App"),
+        title: Text(
+          "Meu App",
+          style: GoogleFonts.roboto(),
+        ),
       ),
-      body: Center(child: Text(numberRandom.toString())),
+      body: Center(
+          child: Text(
+        numberRandom.toString(),
+        style: GoogleFonts.acme(fontSize: 25),
+      )),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
