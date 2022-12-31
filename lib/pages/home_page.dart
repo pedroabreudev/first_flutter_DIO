@@ -12,6 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var numberRandom = 0;
+  var numeroCliques = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +23,58 @@ class _HomePageState extends State<HomePage> {
           style: GoogleFonts.roboto(),
         ),
       ),
-      body: Center(
-          child: Text(
-        numberRandom.toString(),
-        style: GoogleFonts.acme(fontSize: 25),
-      )),
+      body: Container(
+        width: double.infinity,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              "Ações do Usuário",
+              style: GoogleFonts.acme(fontSize: 25),
+            ),
+            Text(
+              "Foi clicado $numeroCliques vezes",
+              style: GoogleFonts.acme(fontSize: 25),
+            ),
+            Text(
+              "O número gerado foi: $numberRandom",
+              style: GoogleFonts.acme(fontSize: 25),
+            ),
+            Row(
+              children: [
+                Container(
+                  color: Colors.red,
+                  child: Text(
+                    "10",
+                    style: GoogleFonts.acme(fontSize: 15),
+                  ),
+                ),
+                Container(
+                  color: Colors.blue,
+                  child: Text(
+                    "20",
+                    style: GoogleFonts.acme(fontSize: 15),
+                  ),
+                ),
+                Container(
+                  color: Colors.green,
+                  child: Text(
+                    "30",
+                    style: GoogleFonts.acme(fontSize: 15),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
           setState(() {
+            numeroCliques = numeroCliques + 1;
             numberRandom = MakeNumberRandomService.makeNumberRandom(1000);
           });
         },
